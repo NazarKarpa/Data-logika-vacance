@@ -6,25 +6,29 @@ df.info()
 
 def salary_set_cleaned(salary):
 
+
     if '$' in salary:
         salary = salary.replace('$', '')
-    if '-' in salary:
-        salary = salary.replace('-', '')
+
+
     if '(Glassdoor est.)' in salary:
         salary = salary.replace('(Glassdoor est.)', '')
     if 'K' in salary:
         salary = salary.replace('K', '')
-    return salary
-def group_salary(salary):
-    global df
 
-    for df['Salary Estimate'] in range(2253):
-        df.insert(2, 'Min_salary', 1)
+    salary_min = salary.split('-')[0]
+    return salary_min
+    salary_max = salary.split('-')[1]
+    return salary_max
 
-df = group_salary(['Salary Estimate'])
 
-df['Salary Estimate'] = df['Salary Estimate'].apply(salary_set_cleaned)
+
+
+
+
+df['Salary_min'] = df['Salary Estimate'].apply(salary_set_cleaned)
+df['Salary_max'] = df['Salary Estimate'].apply(salary_set_cleaned)
 df.to_csv('Cleaned.csv')
-
+#Дз видалити лишні стовпціц є приклад в дата клин після того очистити інші важливі та сробити візуалізацію
 
 
