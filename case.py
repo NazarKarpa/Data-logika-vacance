@@ -31,10 +31,24 @@ def max_salary(salary):
     salary_max = salary.split('-')[1]
     return salary_max
 
+'201 to 500 employees'
+def max_empress(empress):
+    if 'employees' in empress:
+        empress = empress.replace('+', '')
+    if 'employees' in empress:
+        empress = empress.replace('employees', '')
+    empres_max = empress.split('to')[-1]
 
 
 
 
+    return empres_max
+
+
+'Company - Private, Company - Public'
+
+
+df['Size'] = df['Size'].apply(max_empress)
 df['Salary_min'] = df['Salary Estimate'].apply(salary_min)
 df['Salary_max'] = df['Salary Estimate'].apply(max_salary)
 
