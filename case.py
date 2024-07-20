@@ -46,8 +46,16 @@ def max_empress(empress):
 
 
 'Company - Private, Company - Public'
+def private_public_company(company):
+    if 'Company' in  company:
+        company_list = company.replace('Company', '')
+    else:
+        return 'Other'
+    company_ = company_list.split('-')[-1]
+    return company_
 
 
+df['Type of ownership'] = df['Type of ownership'].apply(private_public_company)
 df['Size'] = df['Size'].apply(max_empress)
 df['Salary_min'] = df['Salary Estimate'].apply(salary_min)
 df['Salary_max'] = df['Salary Estimate'].apply(max_salary)
