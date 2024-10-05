@@ -2,6 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 df = pd.read_csv('Cleaned.csv')
 df.info()
-df.plot(kind='scatter', x = 'Size', y = 'Salary_max')
+df.plot(y = 'Revenue', x = 'Salary_max', kind = 'scatter')
 
 plt.show()
